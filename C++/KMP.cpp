@@ -20,7 +20,7 @@ void kmp(string& p, string& s)
     for(int i = n - 1; i > 0; --i)  next[i] = next[i - 1]; //NEXT数列右移一位
 
 
-    for(int i = 0, j = 0; i < s.size() - 1; ++i)
+    for(int i = 0, j = 0; i < s.size() - 1; ++i) //匹配过程
     {
         while(j && s[i] != p[j]) j = next[j];
         if(s[i] == p[j]) ++j;
