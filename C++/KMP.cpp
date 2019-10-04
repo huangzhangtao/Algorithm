@@ -6,7 +6,7 @@ using namespace std;
 void kmp(string& p, string& s)
 {
     int n = p.size();
-    if(n < 2)  return;
+    if(!n)  return;
     
     vector<int> next(n, 0);
 
@@ -20,14 +20,14 @@ void kmp(string& p, string& s)
     for(int i = n - 1; i > 0; --i)  next[i] = next[i - 1]; //NEXT数列右移一位
 
 
-    for(int i = 0, j = 0; i < s.size() - 1; ++i) //匹配过程
+    for(int i = 0, j = 0; i < s.size(); ++i) //匹配过程
     {
         while(j && s[i] != p[j]) j = next[j];
         if(s[i] == p[j]) ++j;
-        if(j == n - 1)
+        if(j == n)
         {
             cout<< i - j + 1 << endl;
-            j = next[j];
+            j = next[j - 1];
         }
     }
 }
